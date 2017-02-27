@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8134acd7-01be-4c87-ae05-d2c5f53ad64b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatroom.py" afterPath="$PROJECT_DIR$/chatroom.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,8 +23,8 @@
       <file leaf-file-name="chatroom.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chatroom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state relative-caret-position="494">
+              <caret line="164" column="72" lean-forward="true" selection-start-line="164" selection-start-column="72" selection-end-line="164" selection-end-column="72" />
               <folding>
                 <element signature="e#275#321#0" expanded="false" />
                 <element signature="e#366#469#0" expanded="false" />
@@ -437,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488222827045</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added a new command called &quot;edit profile&quot; that lets you change either your email, password or bio.">
+      <created>1488224103278</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1488224103278</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -507,7 +513,8 @@
     <MESSAGE value="Added easter egg: If you type &quot;show json&quot;, it will print out the contents of the JSON file used to store info. The password, username and bio are still encrypted in the message however! :D" />
     <MESSAGE value="Instead of printing the JSON in a ugly format, it will now use the pprint (pretty print) library to print it in a &quot;prettier&quot; format." />
     <MESSAGE value="Program will now not except two accounts for one email." />
-    <option name="LAST_COMMIT_MESSAGE" value="Program will now not except two accounts for one email." />
+    <MESSAGE value="Added a new command called &quot;edit profile&quot; that lets you change either your email, password or bio." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a new command called &quot;edit profile&quot; that lets you change either your email, password or bio." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -621,8 +628,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chatroom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state relative-caret-position="494">
+          <caret line="164" column="72" lean-forward="true" selection-start-line="164" selection-start-column="72" selection-end-line="164" selection-end-column="72" />
           <folding>
             <element signature="e#275#321#0" expanded="false" />
             <element signature="e#366#469#0" expanded="false" />
