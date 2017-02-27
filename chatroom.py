@@ -1,6 +1,8 @@
+import string
 import json
 import sys
 import os
+import re
 
 from vigenere import encode, decode
 from user import User
@@ -12,6 +14,13 @@ KEY = 'NODf8dtlghmgf;hdfg0h[8fd79ertif&%$d90+ddf!~'
 def display_posts():
     for post in posts:
         post.display_post()
+
+
+def username_exists(username, users):
+    for user in users:
+        if user.get_username() == username:
+            return True
+    return False
 
 
 def save_data(users, posts):
@@ -34,12 +43,74 @@ def convert_to_post(dict_):
     return Post(**dict_)
 
 
+def validate_username(username):
+    contains_valid_chars = True
+    for char in username:
+        if char not in (string.ascii_letters + "_-0123456789"):
+            contains_valid_chars = False
+    if not contains_valid_chars:
+        print("ERROR: The username has invalid characters in it. Make sure you are a=only using letters, numbers,"
+              "the - character and the _ character.")
+        return False
+    elif not (len(username) > 3 and len(username) < 15):
+        print("ERROR: The length of the username must be GREATER than3 letters and LESS THEM 15 letters.")
+        return False
+    return True
+
+
+def validate_password(password):
+    if len(password) > 3 and len(password) < 14:
+        return True
+    else:
+        print("ERROR: Password is too short (or too long)")
+        return False
+
+
+def validate_email(email):
+    try:
+        match_object = re.match(r'[a-zA-Z0-9+_]+@[a-zA-Z0-9-.]+', email)
+        return match_object.span()[0] == 0 and match_object.span()[1] == len(email)
+    except:
+        return False
+
+
+def validate_name(name):
+    try:
+        match_object = re.match(r'[a-zA-Z]+\s([a-zA-Z.]+)?\s?[a-zA-Z]+', name)
+        return match_object.span()[0] == 0 and match_object.span()[1] == len(name)
+    except:
+        return False
+
+
 def create_user():
+    print("Make sure that:")
+    print("- Your username contains only letters, numbers, the underscore (_) and the hyphen (-)\n"
+          "- Your username is more than 3 and less than 15 characters long\n"
+          "- Your password is greater than 5 characters and less than 14 characters\n"
+          "- Your email is a real valid email\n"
+          "- You include both your first and last name (middle name is optional)")
+
     username = input("What do you want your username to be? Be creative; you won't be able to change this later! ")
+    if not validate_username(username) or username_exists(username, users):
+        if username_exists(username, users):
+            print("ERROR: Sorry, that username is already taken. Try something else!")
+        return
+
     password = input("What do you want your password to be? ")
+    if not validate_password(password):
+        return
+
     name = input("What's your full name? (This is optional) ")
+    if name != '' and not (validate_name(name)):
+        print("ERROR: Isn't a valid name.")
+        return
+
     email = input("What's your email you would like to share? (Also optional) ")
-    print("(Optional) Enter a little more about yourself... (Press Ctrl+d to confirm)")
+    if email != '' and not (validate_email(email)):
+        print("ERROR: Isn't a valid email.")
+        return
+
+    print("(Optional, press Ctrl+d to quit) Enter a little more about yourself... (Press Ctrl+d to confirm)")
     bio = sys.stdin.read().strip()
 
     user_info = {
@@ -54,18 +125,9 @@ def create_user():
         user_info['bio'] = bio
 
     print("Creating account...")
-    try:
-        user = User(**user_info)
-    except AssertionError:
-        print("ERROR: There was something wrong with your information you passed in. Make sure that:\n"
-              "- Your username contains only letters, numbers, the underscore (_) and the hyphen (-)\n"
-              "- Your username is more than 3 and less than 15 characters long\n"
-              "- Your password is greater than 5 characters and less than 14 characters\n"
-              "- Your email is a real valid email\n"
-              "- You include both your first and last name (middle name is optional)")
-    else:
-        users.append(user)
-        print("Creation complete! You may log in (using the command LOG IN) now.")
+    user = User(**user_info)
+    users.append(user)
+    print("Creation complete! You may log in (using the command LOG IN) now.")
 
 
 try:
@@ -78,6 +140,7 @@ else:
     data = json.loads(json.load(file))
     users = [convert_to_user(user) for user in data['users']]
     posts = [convert_to_post(post) for post in data['posts']]
+    print("Loading complete!\n")
 
 current_user = None
 

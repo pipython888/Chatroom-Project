@@ -3,36 +3,8 @@ import string
 import re
 
 
-def is_valid_email(email):
-    try:
-        match_object = re.match(r'[a-zA-Z0-9+_]+@[a-zA-Z0-9-.]+', email)
-        return match_object.span()[0] == 0 and match_object.span()[1] == len(email)
-    except:
-        return False
-
-
-def is_valid_name(name):
-    try:
-        match_object = re.match(r'[a-zA-Z]+\s([a-zA-Z.]+)?\s?[a-zA-Z]+', name)
-        return match_object.span()[0] == 0 and match_object.span()[1] == len(name)
-    except:
-        return False
-
-
 class User:
     def __init__(self, username, password, email=None, name=None, bio="No bio for this user"):
-        # Check to make sure the username doesn't contain strange characters
-        contains_valid_chars = True
-        for char in username:
-            if char not in (string.ascii_letters + "_-0123456789"):
-                contains_valid_chars = False
-
-        assert (type(username) == str or username == None) and contains_valid_chars
-        assert type(password) == str and len(password) > 5 and len(password) < 14
-        assert is_valid_email(email) or email == None
-        assert is_valid_name(name) or name == None
-        assert len(username) > 3 and len(username) < 15
-
         self.username = username
         self.password = password
         self.email = email
