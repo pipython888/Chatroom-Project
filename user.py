@@ -29,8 +29,8 @@ class User:
 
         assert (type(username) == str or username == None) and contains_valid_chars
         assert type(password) == str
-        assert is_valid_email(email)
-        assert is_valid_name(name)
+        assert is_valid_email(email) or email == None
+        assert is_valid_name(name) or name == None
         assert len(username) > 3 and len(username) < 15
 
         self.username = username
