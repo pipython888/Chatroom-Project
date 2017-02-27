@@ -1,14 +1,20 @@
+import sys
 from user import User
 from post import Post
 
-alex = User(username="xela888",
-            password="GPIOpython_",
-            email="alexdavison888@gmail.com",
-            name="Alexander J. Davison",
-            bio="""A Python developer that is very interested in Game development!
-Enjoys Python, Ruby, JS, Python's PyGame and Unity.
-Also likes playing/watching tennis, playing board games and playing the
-trumpet! :D""")
+current_user = User(username="xela888", password="GPIOpython_")
+posts = []
 
-post = Post(user=alex, content="Hello world! My first post.")
-post.display_post()
+
+def display_posts():
+    for post in posts:
+        post.display_post()
+
+
+while True:
+    user_input = input('%s> ' % current_user.username)
+    if user_input == 'add post':
+        content = input("What are you thinking of? Use 1-40 characters: ")
+        posts.append(Post(current_user, content))
+    elif user_input == 'read posts':
+        display_posts()
