@@ -30,11 +30,15 @@ def save_data(users, posts):
     }
     for x in info_dict['users']:
         x['password'] = encode(x['password'], KEY)
+        x['username'] = encode(x['username'], KEY)
+        x['bio'] = encode(x['bio'], KEY)
     json.dump(json.dumps(info_dict), open("data.json", 'w'))
 
 
 def convert_to_user(dict_):
     dict_['password'] = decode(dict_['password'], KEY)
+    dict_['username'] = decode(dict_['username'], KEY)
+    dict_['bio'] = decode(dict_['bio'], KEY)
     return User(**dict_)
 
 
@@ -98,6 +102,11 @@ def create_user():
 
     password = input("What do you want your password to be? ")
     if not validate_password(password):
+        return
+
+    confirm_password = input("Please type your password again: ")
+    if password != confirm_password:
+        print("ERROR: The two passwords don't match")
         return
 
     name = input("What's your full name? (This is optional) ")
