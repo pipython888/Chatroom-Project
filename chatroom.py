@@ -1,9 +1,12 @@
+import json
 import sys
 import os
-import json
 
+from vigenere import encode, decode
 from user import User
 from post import Post
+
+KEY = 'NODf8dtlghmgf;hdfg0h[8fd79ertif&%$d90+ddf!~'
 
 
 def display_posts():
@@ -16,10 +19,13 @@ def save_data(users, posts):
         'users': [user.convert_to_dict() for user in users],
         'posts': [post.convert_to_dict() for post in posts]
     }
+    for x in info_dict['users']:
+        x['password'] = encode(x['password'], KEY)
     json.dump(json.dumps(info_dict), open("data.json", 'w'))
 
 
 def convert_to_user(dict_):
+    dict_['password'] = decode(dict_['password'], KEY)
     return User(**dict_)
 
 
@@ -129,6 +135,9 @@ while True:
         elif user_input == 'log out' or user_input == 'sign out':
             print("Dude, your already signed out!")
         elif user_input == 'exit' or user_input == 'quit':
+            print("Saving information...")
+            save_data(users, posts)
+            print("Completed saving! Bye!")
             sys.exit(0)
         elif user_input == 'help' or user_input == 'get help':
             print(help_message)
@@ -171,7 +180,7 @@ while True:
         elif user_input == 'exit' or user_input == 'quit':
             print("Saving information...")
             save_data(users, posts)
-            print("Completed saving! Bye!")
+            print("Completed saving! Bye %s!" % current_user)
             sys.exit(0)
         elif user_input == '':
             print("Ahem. What did you want to say?")

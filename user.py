@@ -52,6 +52,9 @@ class User:
 
         self.time_joined = datetime.now().strftime('%A, %b. %d %Y, %I:%M%p')
 
+    def __str__(self):
+        return self.username
+
     def display_profile(self):
         lines = ['Joined at: ' + self.time_joined]
         if self.name:
