@@ -24,10 +24,10 @@
       <file leaf-file-name="chatroom.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chatroom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="31" column="50" lean-forward="true" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+            <state relative-caret-position="705">
+              <caret line="277" column="60" lean-forward="true" selection-start-line="277" selection-start-column="60" selection-end-line="277" selection-end-column="60" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,6 +74,12 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>string</find>
+      <find>re</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -386,7 +392,21 @@
       <option name="project" value="LOCAL" />
       <updated>1488220275355</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Both username and bio are now encrypted (just in case if this info is useful for hackers xD)">
+      <created>1488220953233</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1488220953233</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added easter egg: If you type &quot;show json&quot;, it will print out the contents of the JSON file used to store info. The password, username and bio are still encrypted in the message however! :D">
+      <created>1488221133988</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1488221133988</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -452,7 +472,9 @@
     <MESSAGE value="Passwords are not encrypted with the Vigenere cipher. Not 100% safe from hackers, but still more safe then before!" />
     <MESSAGE value="Improved UI. The program now validates the input after each input (when creating account) instead of giving feedback after all data is passed in. Also prints data requirements BEFORE user enters info." />
     <MESSAGE value="Users now can get a list of users and also remove their account" />
-    <option name="LAST_COMMIT_MESSAGE" value="Users now can get a list of users and also remove their account" />
+    <MESSAGE value="Both username and bio are now encrypted (just in case if this info is useful for hackers xD)" />
+    <MESSAGE value="Added easter egg: If you type &quot;show json&quot;, it will print out the contents of the JSON file used to store info. The password, username and bio are still encrypted in the message however! :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added easter egg: If you type &quot;show json&quot;, it will print out the contents of the JSON file used to store info. The password, username and bio are still encrypted in the message however! :D" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -465,7 +487,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -556,10 +578,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chatroom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="31" column="50" lean-forward="true" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+        <state relative-caret-position="705">
+          <caret line="277" column="60" lean-forward="true" selection-start-line="277" selection-start-column="60" selection-end-line="277" selection-end-column="60" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

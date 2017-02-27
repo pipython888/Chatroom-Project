@@ -1,7 +1,8 @@
-import string
+from string import ascii_letters
+from pprint import pprint
+from os import system
 import json
 import sys
-import os
 import re
 
 from vigenere import encode, decode
@@ -50,7 +51,7 @@ def convert_to_post(dict_):
 def validate_username(username):
     contains_valid_chars = True
     for char in username:
-        if char not in (string.ascii_letters + "_-0123456789"):
+        if char not in (ascii_letters + "_-0123456789"):
             contains_valid_chars = False
     if not contains_valid_chars:
         print("ERROR: The username has invalid characters in it. Make sure you are a=only using letters, numbers,"
@@ -251,10 +252,10 @@ while True:
                 if user.get_username() == username:
                     found = True
                     input("Found! Press enter to view.")
-                    os.system('clear')
+                    system('clear')
                     user.display_profile()
                     input("Press enter to go back to the menu...")
-                    os.system('clear')
+                    system('clear')
             if not found:
                 print("User not found. Did you make a typo?")
         elif user_input == 'delete account' or user_input == 'remove account':
@@ -274,7 +275,7 @@ while True:
             print("Completed saving! Bye %s!" % current_user)
             sys.exit(0)
         elif user_input == 'show json':
-            print(json.loads(json.load(open('data.json'))))
+            pprint(json.loads(json.load(open('data.json'))))
         elif user_input == '':
             print("Ahem. What did you want to say?")
         else:
