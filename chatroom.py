@@ -150,6 +150,26 @@ def create_user():
     print("Creation complete! You may log in (using the command LOG IN) now.")
 
 
+def edit_profile(user, users):
+    to_edit = ''
+    while to_edit not in ('password', 'email', 'bio', 'cancel'):
+        to_edit = input("What do you want to edit? Enter PASSWORD, EMAIL, CANCEL (to cancel) or BIO: ").lower()
+        if to_edit not in ('password', 'email', 'bio', 'cancel'):
+            print("That's not one of the choices!")
+        elif to_edit == 'cancel':
+            return
+    index_of_user = users.index(user)
+    if to_edit == 'password':
+        users[index_of_user].set_password()
+    elif to_edit == 'email':
+        users[index_of_user].set_email(input("What's your new email? "))
+    elif to_edit == 'bio':
+        print("Enter your new bio (press Ctrl+d to confirm)...")
+        users[index_of_user].set_bio(sys.stdin.read().strip())
+    else:
+        raise ValueError("Something went really wrong... the \"to_edit\" variable is a weird value of %s..." % to_edit)
+
+
 try:
     file = open('data.json')
 except FileNotFoundError:
@@ -168,8 +188,10 @@ current_user = None
 help_message = """get help => Gives this help message
 help => Same action as "get help"
 
-quit => Exits the application
+quit => Exits the application (don't worry; it will automatically save your data!)
 exit => Same action as "quit"
+
+save => Saves your data
 
 add post => Allows you to make a post up to 40 characters long
 make post => Same action as "add post"
@@ -279,11 +301,17 @@ while True:
         elif user_input == 'users':
             for user in users:
                 print(user.get_username())
+        elif user_input == 'save':
+            print("Saving information...")
+            save_data(users, posts)
+            print("Completed saving!")
         elif user_input == 'exit' or user_input == 'quit':
             print("Saving information...")
             save_data(users, posts)
             print("Completed saving! Bye %s!" % current_user)
             sys.exit(0)
+        elif user_input == 'edit account' or user_input == 'edit profile':
+            edit_profile(current_user, users)
         elif user_input == 'show json':
             pprint(json.loads(json.load(open('data.json'))))
         elif user_input == '':
