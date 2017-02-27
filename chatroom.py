@@ -273,6 +273,8 @@ while True:
             save_data(users, posts)
             print("Completed saving! Bye %s!" % current_user)
             sys.exit(0)
+        elif user_input == 'show json':
+            print(json.loads(json.load(open('data.json'))))
         elif user_input == '':
             print("Ahem. What did you want to say?")
         else:
