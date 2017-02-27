@@ -39,7 +39,7 @@ class User:
         self.name = name
 
         self.bio = ''
-        # Add a newline after each 72 character
+        # Add a newline after each 72 characters
         i = 1
         for char in bio:
             if char == '\n':
@@ -53,11 +53,14 @@ class User:
         self.time_joined = datetime.now().strftime('%A, %b. %d %Y, %I:%M%p')
 
     def display_profile(self):
-        lines = ['Name: ' + self.name,
-                 'Email: <%s>' % self.email,
-                 'Joined at: ' + self.time_joined]
+        lines = ['Joined at: ' + self.time_joined]
+        if self.name:
+            lines.append('Name: ' + self.name)
+        if self.email:
+            lines.append('Email: <%s>' % self.email)
         lines.extend(self.bio.split('\n'))
-        # Get the longest line on the profile
+
+        # Get the longest line on the profile view
         longest_line_length = max([len(x) for x in lines])
 
         extra_spaces = 0

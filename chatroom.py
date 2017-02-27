@@ -18,6 +18,8 @@ def create_user():
     password = input("What do you want your password to be? ")
     name = input("What's your full name? (This is optional) ")
     email = input("What's your email you would like to share? (Also optional) ")
+    print("(Optional) Enter a little more about yourself... (Press Ctrl+d to confirm)")
+    bio = sys.stdin.read().strip()
 
     user_info = {
         'username': username,
@@ -27,6 +29,8 @@ def create_user():
         user_info['name'] = name
     if email:
         user_info['email'] = email
+    if bio:
+        user_info['bio'] = bio
 
     print("Creating account...")
     try:
@@ -60,10 +64,10 @@ sign out => Same effect as "log out"
 """
 
 while True:
-    try:
+    if current_user:
         user_input = input('@%s > ' % current_user.username).lower()
-    except AttributeError:
-        user_input = input('> ').lower()
+    else:
+        user_input = input('> ')
     if current_user == None:
         if user_input == 'create user' or user_input == 'sign up' or user_input == 'create account':
             create_user()
