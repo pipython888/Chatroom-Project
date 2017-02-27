@@ -28,7 +28,7 @@ class User:
                 contains_valid_chars = False
 
         assert (type(username) == str or username == None) and contains_valid_chars
-        assert type(password) == str
+        assert type(password) == str and len(password) > 5 and len(password) < 14
         assert is_valid_email(email) or email == None
         assert is_valid_name(name) or name == None
         assert len(username) > 3 and len(username) < 15
@@ -84,6 +84,9 @@ class User:
         print(self.bio)
         print('-' * longest_line_length)
 
-    def is_user(self, user):
-        assert isinstance(user, User)
-        return self.username == user.username and self.password == user.password
+    def get_username(self):
+        return self.username
+
+    def is_user(self, username, password):
+        assert type(username) == str and type(password) == str
+        return self.username == username and self.password == password
