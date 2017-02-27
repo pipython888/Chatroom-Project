@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8134acd7-01be-4c87-ae05-d2c5f53ad64b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatroom.py" afterPath="$PROJECT_DIR$/chatroom.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user.py" afterPath="$PROJECT_DIR$/user.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -415,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488221822713</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Program will now not except two accounts for one email.">
+      <created>1488222821851</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1488222821851</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -484,7 +489,8 @@
     <MESSAGE value="Both username and bio are now encrypted (just in case if this info is useful for hackers xD)" />
     <MESSAGE value="Added easter egg: If you type &quot;show json&quot;, it will print out the contents of the JSON file used to store info. The password, username and bio are still encrypted in the message however! :D" />
     <MESSAGE value="Instead of printing the JSON in a ugly format, it will now use the pprint (pretty print) library to print it in a &quot;prettier&quot; format." />
-    <option name="LAST_COMMIT_MESSAGE" value="Instead of printing the JSON in a ugly format, it will now use the pprint (pretty print) library to print it in a &quot;prettier&quot; format." />
+    <MESSAGE value="Program will now not except two accounts for one email." />
+    <option name="LAST_COMMIT_MESSAGE" value="Program will now not except two accounts for one email." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
