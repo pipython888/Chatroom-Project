@@ -93,3 +93,16 @@ class User:
     def is_user(self, username, password):
         assert type(username) == str and type(password) == str
         return self.username == username and self.password == password
+
+    def convert_to_dict(self):
+        dict_ = {
+            'username': self.username,
+            'password': self.password,  # Check this to be safer
+        }
+        if self.name:
+            dict_['name'] = self.name
+        if self.email:
+            dict_['email'] = self.email
+        if self.bio:
+            dict_['bio'] = self.bio
+        return dict_

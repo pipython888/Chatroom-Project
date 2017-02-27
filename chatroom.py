@@ -1,16 +1,31 @@
 import sys
+import os
+import json
+
 from user import User
 from post import Post
-
-users = []
-posts = []
-
-current_user = None
 
 
 def display_posts():
     for post in posts:
         post.display_post()
+
+
+def save_data(users, posts):
+    info_dict = {
+        'users': [user.convert_to_dict() for user in users],
+        'posts': [post.convert_to_dict() for post in posts]
+    }
+    json.dump(json.dumps(info_dict), open("data.json", 'w'))
+
+
+def convert_to_user(dict_):
+    return User(**dict_)
+
+
+def convert_to_post(dict_):
+    dict_['user'] = convert_to_user(dict_['user'])
+    return Post(**dict_)
 
 
 def create_user():
@@ -47,27 +62,55 @@ def create_user():
         print("Creation complete! You may log in (using the command LOG IN) now.")
 
 
+try:
+    file = open('data.json')
+except FileNotFoundError:
+    users = []
+    posts = []
+else:
+    print("Information found! Loading in info...")
+    data = json.loads(json.load(file))
+    users = [convert_to_user(user) for user in data['users']]
+    posts = [convert_to_post(post) for post in data['posts']]
+
+current_user = None
+
+
 help_message = """get help => Gives this help message
 help => Same action as "get help"
+
+quit => Exits the application
+exit => Same action as "quit"
+
 add post => Allows you to make a post up to 40 characters long
 make post => Same action as "add post"
 create post => Same action as "add post"
+
 read posts => Displays all of the posts of all users
 show posts => Same action as "read posts"
-create user => Lets you creat an account
+view posts => Saem action as "read posts"
+posts => Same action as "read posts"
+
+create user => Lets you create an account
 sign up => Same effect as "create user"
 create account => Same effect as "create user"
+
 log in => Logs you in. You must be logged out to do this
 sign in => Same action as "log in"
+
 log out => Logs you out so the computer doesn't know who you are. You must do this to sign into another account!
 sign out => Same effect as "log out"
+
+view profile => View a users's profile
 """
+
+print("Type HELP to get help.")
 
 while True:
     if current_user:
         user_input = input('@%s > ' % current_user.username).lower()
     else:
-        user_input = input('> ')
+        user_input = input('> ').lower()
     if current_user == None:
         if user_input == 'create user' or user_input == 'sign up' or user_input == 'create account':
             create_user()
@@ -86,9 +129,9 @@ while True:
         elif user_input == 'log out' or user_input == 'sign out':
             print("Dude, your already signed out!")
         elif user_input == 'exit' or user_input == 'quit':
-            print("Saving information...")
-            print("Completed saving! Bye!")
             sys.exit(0)
+        elif user_input == 'help' or user_input == 'get help':
+            print(help_message)
         else:
             print("Hmm... Either you entered an invalid command or I don't know who you are. "
                   "To create an account, you can type CREATE USER.")
@@ -101,7 +144,7 @@ while True:
                 posts.append(Post(current_user, content))
             except AssertionError:
                 print("Hmm... Your post doesn't seem valid. Make sure it isn't longest than 40 characters!")
-        elif user_input == 'read posts' or user_input == 'show posts':
+        elif user_input in ('read posts', 'show posts', 'view posts', 'posts'):
             display_posts()
         elif user_input == 'create user' or user_input == 'sign up' or user_input == 'create account':
             print("You must be signed out to do that!")
@@ -111,6 +154,25 @@ while True:
             print("Logging out...")
             current_user = None
             print("Logging out complete!")
+        elif user_input == 'view profile':
+            username = input("Which user's profile would you like to see? Input the username of the user: ")
+
+            found = False
+            for user in users:
+                if user.get_username() == username:
+                    found = True
+                    input("Found! Press enter to view.")
+                    os.system('clear')
+                    user.display_profile()
+                    input("Press enter to go back to the menu...")
+                    os.system('clear')
+            if not found:
+                print("User not found. Did you make a typo?")
+        elif user_input == 'exit' or user_input == 'quit':
+            print("Saving information...")
+            save_data(users, posts)
+            print("Completed saving! Bye!")
+            sys.exit(0)
         elif user_input == '':
             print("Ahem. What did you want to say?")
         else:
