@@ -65,6 +65,28 @@ class User:
     def get_username(self):
         return self.username
 
+    def get_email(self):
+        return self.email
+
+    def set_password(self):
+        old_password = input("What's your current password? ")
+        if old_password == self.password:
+            new_password = input("What do you want your password to be? ")
+            confirm_password = input("Please enter the new password again... ")
+            if new_password == confirm_password:
+                print("Resetting password...")
+                self.password = new_password
+            else:
+                print("Those two passwords don't match!")
+        else:
+            print("That isn't your password...")
+
+    def set_bio(self, new_bio):
+        self.bio = new_bio
+
+    def set_email(self, email):
+        self.email = email
+
     def is_user(self, username, password):
         assert type(username) == str and type(password) == str
         return self.username == username and self.password == password

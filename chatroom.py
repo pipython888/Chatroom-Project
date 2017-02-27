@@ -24,6 +24,13 @@ def username_exists(username, users):
     return False
 
 
+def email_exists(email, users):
+    for user in users:
+        if user.get_email() == email:
+            return True
+    return False
+
+
 def save_data(users, posts):
     info_dict = {
         'users': [user.convert_to_dict() for user in users],
@@ -54,7 +61,7 @@ def validate_username(username):
         if char not in (ascii_letters + "_-0123456789"):
             contains_valid_chars = False
     if not contains_valid_chars:
-        print("ERROR: The username has invalid characters in it. Make sure you are a=only using letters, numbers,"
+        print("ERROR: The username has invalid characters in it. Make sure you are are only using letters, numbers,"
               "the - character and the _ character.")
         return False
     elif not (len(username) > 3 and len(username) < 15):
@@ -118,6 +125,9 @@ def create_user():
     email = input("What's your email you would like to share? (Also optional) ")
     if email != '' and not (validate_email(email)):
         print("ERROR: Isn't a valid email.")
+        return
+    if email_exists(email, users):
+        print("That email is already used! You aren't allowed to make two accounts.")
         return
 
     print("(Optional, press Ctrl+d to quit) Enter a little more about yourself... (Press Ctrl+d to confirm)")
