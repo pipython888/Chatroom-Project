@@ -4,7 +4,6 @@
     <list default="true" id="8134acd7-01be-4c87-ae05-d2c5f53ad64b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatroom.py" afterPath="$PROJECT_DIR$/chatroom.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user.py" afterPath="$PROJECT_DIR$/user.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +24,8 @@
       <file leaf-file-name="chatroom.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chatroom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2565">
-              <caret line="135" column="14" lean-forward="true" selection-start-line="135" selection-start-column="14" selection-end-line="135" selection-end-column="14" />
+            <state relative-caret-position="-967">
+              <caret line="177" column="49" lean-forward="false" selection-start-line="177" selection-start-column="49" selection-end-line="177" selection-end-column="49" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -373,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488218704592</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Improved UI. The program now validates the input after each input (when creating account) instead of giving feedback after all data is passed in. Also prints data requirements BEFORE user enters info.">
+      <created>1488219861059</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1488219861059</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -391,7 +397,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17668776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3298647" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -437,7 +443,8 @@
     <MESSAGE value="Users can now add a bio to their profile" />
     <MESSAGE value="Saving feature added, however passwords aren't safe, since they are stored in files" />
     <MESSAGE value="Passwords are not encrypted with the Vigenere cipher. Not 100% safe from hackers, but still more safe then before!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Passwords are not encrypted with the Vigenere cipher. Not 100% safe from hackers, but still more safe then before!" />
+    <MESSAGE value="Improved UI. The program now validates the input after each input (when creating account) instead of giving feedback after all data is passed in. Also prints data requirements BEFORE user enters info." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved UI. The program now validates the input after each input (when creating account) instead of giving feedback after all data is passed in. Also prints data requirements BEFORE user enters info." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -533,8 +540,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chatroom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="135" column="14" lean-forward="true" selection-start-line="135" selection-start-column="14" selection-end-line="135" selection-end-column="14" />
+        <state relative-caret-position="-967">
+          <caret line="177" column="49" lean-forward="false" selection-start-line="177" selection-start-column="49" selection-end-line="177" selection-end-column="49" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

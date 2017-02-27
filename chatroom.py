@@ -171,6 +171,11 @@ log out => Logs you out so the computer doesn't know who you are. You must do th
 sign out => Same effect as "log out"
 
 view profile => View a users's profile
+
+users => Get a list of users
+
+remove account => Removes your account and logs you out
+delete account => Same effect as "remove account"
 """
 
 print("Type HELP to get help.")
@@ -195,6 +200,9 @@ while True:
                     current_user = user
             if not found:
                 print("Sorry, that account doesn't exist. Either your password is wrong or the user doesn't exist.")
+        elif user_input == 'users':
+            for user in users:
+                print(user.get_username())
         elif user_input == 'log out' or user_input == 'sign out':
             print("Dude, your already signed out!")
         elif user_input == 'exit' or user_input == 'quit':
@@ -240,6 +248,17 @@ while True:
                     os.system('clear')
             if not found:
                 print("User not found. Did you make a typo?")
+        elif user_input == 'delete account' or user_input == 'remove account':
+            check = input("Are you sure? [Ny] ")
+            if check.lower() == 'y' or check.lower() == 'yes':
+                print('Removing account...')
+                users.remove(current_user)
+                print("Finished! Logging out...")
+                current_user = None
+                print("All complete!")
+        elif user_input == 'users':
+            for user in users:
+                print(user.get_username())
         elif user_input == 'exit' or user_input == 'quit':
             print("Saving information...")
             save_data(users, posts)
