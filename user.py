@@ -1,6 +1,9 @@
 from datetime import datetime
 import string
-import re
+
+from vigenere import encode
+
+KEY = 'NODf8dtlghmgf;hdfg0h[8fd79ertif&%$d90+ddf!~'
 
 
 class User:
@@ -23,9 +26,6 @@ class User:
             i += 1
 
         self.time_joined = datetime.now().strftime('%A, %b. %d %Y, %I:%M%p')
-
-    def __str__(self):
-        return self.username
 
     def display_profile(self):
         lines = ['Joined at: ' + self.time_joined]
@@ -62,12 +62,6 @@ class User:
         print(self.bio)
         print('-' * longest_line_length)
 
-    def get_username(self):
-        return self.username
-
-    def get_email(self):
-        return self.email
-
     def set_password(self):
         old_password = input("What's your current password? ")
         if old_password == self.password:
@@ -81,12 +75,6 @@ class User:
         else:
             print("That isn't your password...")
 
-    def set_bio(self, new_bio):
-        self.bio = new_bio
-
-    def set_email(self, email):
-        self.email = email
-
     def is_user(self, username, password):
         assert type(username) == str and type(password) == str
         return self.username == username and self.password == password
@@ -94,7 +82,7 @@ class User:
     def convert_to_dict(self):
         dict_ = {
             'username': self.username,
-            'password': self.password,  # Check this to be safer
+            'password': encode(self.password, KEY),
         }
         if self.name:
             dict_['name'] = self.name

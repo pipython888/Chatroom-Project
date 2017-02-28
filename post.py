@@ -11,7 +11,6 @@ class Post:
         else:
             self.time = time
 
-
     def display_post(self):
         print('@%s: %s\t\t%s' % (self.user.username, self.content, self.time))
 

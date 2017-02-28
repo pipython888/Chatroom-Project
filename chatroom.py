@@ -19,14 +19,14 @@ def display_posts():
 
 def username_exists(username, users):
     for user in users:
-        if user.get_username() == username:
+        if user.username == username:
             return True
     return False
 
 
 def email_exists(email, users):
     for user in users:
-        if user.get_email() == email:
+        if user.email == email:
             return True
     return False
 
@@ -38,15 +38,11 @@ def save_data(users, posts):
     }
     for x in info_dict['users']:
         x['password'] = encode(x['password'], KEY)
-        x['username'] = encode(x['username'], KEY)
-        x['bio'] = encode(x['bio'], KEY)
     json.dump(json.dumps(info_dict), open("data.json", 'w'))
 
 
 def convert_to_user(dict_):
     dict_['password'] = decode(dict_['password'], KEY)
-    dict_['username'] = decode(dict_['username'], KEY)
-    dict_['bio'] = decode(dict_['bio'], KEY)
     return User(**dict_)
 
 
@@ -162,10 +158,10 @@ def edit_profile(user, users):
     if to_edit == 'password':
         users[index_of_user].set_password()
     elif to_edit == 'email':
-        users[index_of_user].set_email(input("What's your new email? "))
+        users[index_of_user].email = input("What's your new email? ")
     elif to_edit == 'bio':
         print("Enter your new bio (press Ctrl+d to confirm)...")
-        users[index_of_user].set_bio(sys.stdin.read().strip())
+        users[index_of_user].bio = sys.stdin.read().strip()
     else:
         raise ValueError("Something went really wrong... the \"to_edit\" variable is a weird value of %s..." % to_edit)
 
@@ -183,7 +179,6 @@ else:
     print("Loading complete!\n")
 
 current_user = None
-
 
 help_message = """get help => Gives this help message
 help => Same action as "get help"
@@ -218,7 +213,9 @@ users => Get a list of users
 
 remove account => Removes your account and logs you out
 delete account => Same effect as "remove account"
-"""
+
+edit profile => Lets you edit either your password, bio or email.
+edit account => Same action as "edit profile\""""
 
 print("Type HELP to get help.")
 
@@ -227,7 +224,7 @@ while True:
         user_input = input('@%s > ' % current_user.username).lower()
     else:
         user_input = input('> ').lower()
-    if current_user == None:
+    if current_user is None:
         if user_input == 'create user' or user_input == 'sign up' or user_input == 'create account':
             create_user()
         elif user_input == 'log in' or user_input == 'sign in':
@@ -244,7 +241,7 @@ while True:
                 print("Sorry, that account doesn't exist. Either your password is wrong or the user doesn't exist.")
         elif user_input == 'users':
             for user in users:
-                print(user.get_username())
+                print(user.username())
         elif user_input == 'log out' or user_input == 'sign out':
             print("Dude, your already signed out!")
         elif user_input == 'exit' or user_input == 'quit':
@@ -281,7 +278,7 @@ while True:
 
             found = False
             for user in users:
-                if user.get_username() == username:
+                if user.username == username:
                     found = True
                     input("Found! Press enter to view.")
                     system('clear')
@@ -300,7 +297,7 @@ while True:
                 print("All complete!")
         elif user_input == 'users':
             for user in users:
-                print(user.get_username())
+                print(user.username)
         elif user_input == 'save':
             print("Saving information...")
             save_data(users, posts)
@@ -308,7 +305,7 @@ while True:
         elif user_input == 'exit' or user_input == 'quit':
             print("Saving information...")
             save_data(users, posts)
-            print("Completed saving! Bye %s!" % current_user)
+            print("Completed saving! Bye %s!" % current_user.username)
             sys.exit(0)
         elif user_input == 'edit account' or user_input == 'edit profile':
             edit_profile(current_user, users)
