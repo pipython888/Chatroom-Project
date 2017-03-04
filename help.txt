@@ -1,0 +1,39 @@
+get help => Gives this help message
+help => Same action as "get help"
+
+quit => Exits the application (don't worry; it will automatically save your data!)
+exit => Same action as "quit"
+
+save => Saves your data
+
+add post => Allows you to make a post up to 40 characters long
+make post => Same action as "add post"
+create post => Same action as "add post"
+
+read posts => Displays all of the posts of all users
+show posts => Same action as "read posts"
+view posts => Same action as "read posts"
+posts => Same action as "read posts"
+
+create user => Lets you create an account
+sign up => Same effect as "create user"
+create account => Same effect as "create user"
+
+log in => Logs you in. You must be logged out to do this
+sign in => Same action as "log in"
+
+log out => Logs you out so the computer doesn't know who you are. You must do this to sign into another account!
+sign out => Same effect as "log out"
+
+view profile => View a users's profile
+
+users => Get a list of users
+
+remove account => Removes your account and logs you out
+delete account => Same effect as "remove account"
+
+edit profile => Lets you edit either your password, bio or email.
+edit account => Same action as "edit profile"
+
+follow user => Lets you follow somebody
+follow account => Same as "follow user"

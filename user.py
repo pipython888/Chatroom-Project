@@ -7,11 +7,14 @@ KEY = 'NODf8dtlghmgf;hdfg0h[8fd79ertif&%$d90+ddf!~'
 
 
 class User:
-    def __init__(self, username, password, email=None, name=None, bio="No bio for this user"):
+    def __init__(self, username, password, email=None, name=None,
+                 bio="No bio for this user", followers=[], following=[]):
         self.username = username
         self.password = password
         self.email = email
         self.name = name
+        self.followers = followers
+        self.following = following
 
         self.bio = ''
         # Add a newline after each 72 characters
@@ -62,6 +65,20 @@ class User:
         print(self.bio)
         print('-' * longest_line_length)
 
+        # Print following
+        if self.following:
+            for username in self.following:
+                print("@%s" % username, end=' ')
+            print()
+        print('-' * longest_line_length)
+
+        # Print followers
+        if self.followers:
+            for username in self.followers:
+                print("@%s" % username, end=' ')
+            print()
+        print('-' * longest_line_length)
+
     def set_password(self):
         old_password = input("What's your current password? ")
         if old_password == self.password:
@@ -83,6 +100,8 @@ class User:
         dict_ = {
             'username': self.username,
             'password': encode(self.password, KEY),
+            'following': self.following,
+            'followers': self.followers
         }
         if self.name:
             dict_['name'] = self.name
