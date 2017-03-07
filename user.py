@@ -1,4 +1,5 @@
 from datetime import datetime
+import getpass
 import string
 
 from vigenere import encode
@@ -66,24 +67,32 @@ class User:
         print('-' * longest_line_length)
 
         # Print following
+        print("Following")
+        print('-' * longest_line_length)
         if self.following:
             for username in self.following:
                 print("@%s" % username, end=' ')
             print()
-        print('-' * longest_line_length)
+            print(self.following)
+            print('-' * longest_line_length)
+
+        print()
 
         # Print followers
+        print("Followers")
+        print('-' * longest_line_length)
         if self.followers:
             for username in self.followers:
                 print("@%s" % username, end=' ')
             print()
+            print(self.followers)
         print('-' * longest_line_length)
 
     def set_password(self):
-        old_password = input("What's your current password? ")
+        old_password = getpass.getpass("What's your current password? ")
         if old_password == self.password:
-            new_password = input("What do you want your password to be? ")
-            confirm_password = input("Please enter the new password again... ")
+            new_password = getpass.getpass("What do you want your password to be? ")
+            confirm_password = getpass.getpass("Please enter the new password again... ")
             if new_password == confirm_password:
                 print("Resetting password...")
                 self.password = new_password

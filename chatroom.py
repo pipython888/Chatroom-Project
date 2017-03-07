@@ -1,6 +1,7 @@
 from string import ascii_letters
 from pprint import pprint
 from os import system
+import getpass
 import json
 import sys
 import re
@@ -212,12 +213,12 @@ def create_user():
         return
 
     # Ask for and validates password
-    password = input("What do you want your password to be? ")
+    password = getpass.getpass("What do you want your password to be? ")
     if not validate_password(password):
         return
 
     # Asks for the password to bew typed again
-    confirm_password = input("Please type your password again: ")
+    confirm_password = getpass.getpass("Please type your password again: ")
     if password != confirm_password:
         print("ERROR: The two passwords don't match")
         return
@@ -335,7 +336,7 @@ while True:
             create_user()
         elif user_input == 'log in' or user_input == 'sign in':
             username = input("What's your username? ")
-            password = input("What's your password? ")
+            password = getpass.getpass("What's your password? ")
 
             # Search for user
             found = False
@@ -432,7 +433,7 @@ while True:
                 if user.username == person_to_follow and user.username != current_user.username:
                     # If the user was found, follow the user
                     user.followers.append(current_user.username)
-                    # current_user.following.append(current_user.username)
+                    current_user.following.append(current_user.username)
                     print("Followed %s!" % person_to_follow)
                     found = True
             # If the user wasn't found (or if the user was the current user), tell the user.
