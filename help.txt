@@ -4,6 +4,8 @@ help => Same action as "get help"
 quit => Exits the application (don't worry; it will automatically save your data!)
 exit => Same action as "quit"
 
+clear => Clears the screen
+
 save => Saves your data
 
 add post => Allows you to make a post up to 40 characters long

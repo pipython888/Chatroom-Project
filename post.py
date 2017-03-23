@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Post:
     def __init__(self, user, content, time=None):
-        assert len(content) < 40
+        assert len(content) <= 300
         self.user = user
         self.content = content
         if not time:
@@ -12,7 +12,7 @@ class Post:
             self.time = time
 
     def display_post(self):
-        print('@%s: %s\t\t%s' % (self.user.username, self.content, self.time))
+        print('By %s at %s:\n%s' % (self.user.username, self.time, self.content))
 
     def convert_to_dict(self):
         return {

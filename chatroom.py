@@ -6,7 +6,7 @@ import json
 import sys
 import re
 
-from vigenere import encode, decode
+from vigenere import decode
 from user import User
 from post import Post
 
@@ -64,9 +64,6 @@ def save_data(users, posts):
         'users': [user.convert_to_dict() for user in users],
         'posts': [post.convert_to_dict() for post in posts]
     }
-
-    for x in info_dict['users']:
-        x['password'] = encode(x['password'], KEY)
 
     with open("data.json", 'w') as file_:
         json.dump(json.dumps(info_dict), file_)
@@ -360,6 +357,10 @@ while True:
             sys.exit(0)
         elif user_input == 'help' or user_input == 'get help':
             print(help_message)
+        elif user_input == 'clear':
+            system('clear')
+        elif user_input == '':
+            print("Pardon?")
         else:
             print("Hmm... Either you entered an invalid command or I don't know who you are. "
                   "To create an account, you can type CREATE USER.")
@@ -367,7 +368,8 @@ while True:
         if user_input == 'get help' or user_input == 'help':
             print(help_message)
         elif user_input == 'add post' or user_input == 'make post' or user_input == 'create post':
-            content = input("What are you thinking of? Use 1-40 characters: ")
+            print("What are you thinking of? Use 1-300 characters, and press Ctrl+d when done:")
+            content = sys.stdin.read().strip()
             try:
                 posts.append(Post(current_user, content))
             except AssertionError:
@@ -382,6 +384,8 @@ while True:
             print("Logging out...")
             current_user = None
             print("Logging out complete!")
+        elif user_input == 'clear':
+            system('clear')
         elif user_input == 'view profile':
             username = input("Which user's profile would you like to see? Input the username of the user: ")
 
